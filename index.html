@@ -6,102 +6,190 @@
 <title>Vahid Ahmadi Khorami</title>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
     body {
-        font-family: Arial, sans-serif;
         margin: 0;
-        background: #f2f2f2;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background: #f4f6fa;
         color: #333;
     }
-    .header {
+
+    /* HEADER */
+    .hero {
+        background: linear-gradient(135deg, #0d1117, #1f2937);
+        color: white;
         text-align: center;
-        padding: 60px 20px;
-        background: #0d1117;
-        color: #fff;
+        padding: 80px 20px;
+        animation: fadeIn 1.2s ease-in-out;
     }
-    .header h1 {
+
+    .hero h1 {
         margin: 0;
-        font-size: 40px;
-        font-weight: bold;
+        font-size: 48px;
+        font-weight: 700;
     }
-    .header h3 {
+
+    .hero h3 {
         margin-top: 10px;
-        font-weight: normal;
-        opacity: 0.8;
+        font-size: 20px;
+        opacity: 0.85;
     }
-    .section {
-        max-width: 900px;
+
+    /* CONTAINER */
+    .container {
+        max-width: 1100px;
         margin: 40px auto;
-        padding: 20px;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        padding: 0 20px;
     }
+
+    /* SECTION */
+    .section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.07);
+        animation: fadeUp 0.8s ease;
+    }
+
     h2 {
         margin-top: 0;
+        font-size: 26px;
+        font-weight: 700;
+        border-left: 6px solid #0068ff;
+        padding-left: 12px;
     }
-    .projects ul {
-        list-style: none;
-        padding: 0;
+
+    /* PROJECT CARDS */
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
     }
-    .projects li {
-        margin-bottom: 15px;
-        font-size: 17px;
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 14px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: 0.3s;
+        border-left: 5px solid #0068ff;
     }
-    .projects a {
-        color: #0056ff;
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .card p {
+        opacity: 0.8;
+        font-size: 14px;
+    }
+
+    .card a {
+        color: #0068ff;
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 600;
     }
+
+    /* CONTACT */
+    .contact a {
+        color: #0068ff;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    /* FOOTER */
     .footer {
         text-align: center;
         padding: 30px;
-        color: #555;
+        color: #777;
+        font-size: 14px;
     }
-</style>
 
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+</style>
 </head>
 <body>
 
-<div class="header">
+<!-- HEADER / HERO -->
+<div class="hero">
     <h1>Vahid Ahmadi Khorami</h1>
-    <h3>M.Sc. Mechanical Engineering • Python Developer</h3>
+    <h3>M.Sc. Mechanical Engineer • Python Developer • Numerical Methods</h3>
 </div>
 
-<div class="section">
-    <h2>About Me</h2>
-    <p>
-        I am a mechanical engineer with a strong focus on Python, numerical methods, and engineering education.
-        My work includes educational libraries, numerical notebooks, and learning-oriented tools.
-    </p>
+<div class="container">
+
+    <!-- ABOUT -->
+    <div class="section">
+        <h2>About Me</h2>
+        <p>
+            I am a mechanical engineer with a strong focus on Python programming, numerical methods,
+            and engineering education. My work includes educational libraries, numerical notebooks,
+            terminal-based visualization systems, and learning-oriented development tools.
+        </p>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section">
+        <h2>Featured Projects</h2>
+
+        <div class="projects">
+
+            <div class="card">
+                <div class="card-title">⭐ starpatterns-lib</div>
+                <p>ASCII / terminal pattern generator for learning programming.</p>
+                <a href="https://github.com/vahid2510/starpatterns-lib" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📘 Mechanical Engineering Python</div>
+                <p>Structured engineering notebooks for students.</p>
+                <a href="https://github.com/vahid2510/Mechanical_Engineering_python" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">💻 PyReality</div>
+                <p>A friendly Python learning environment.</p>
+                <a href="https://github.com/vahid2510/PyReality" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🧪 Python-Example</div>
+                <p>~200 creative Python snippets for fast learning.</p>
+                <a href="https://github.com/vahid2510/Python-Example" target="_blank">View on GitHub →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section contact">
+        <h2>Contact</h2>
+        <p>GitHub: <a href="https://github.com/vahid2510" target="_blank">github.com/vahid2510</a></p>
+    </div>
+
 </div>
 
-<div class="section projects">
-    <h2>Featured Projects</h2>
-    <ul>
-        <li>
-            ⭐ <a href="https://github.com/vahid2510/starpatterns-lib" target="_blank">starpatterns-lib</a><br>
-            ASCII/terminal pattern generator.
-        </li>
-        <li>
-            📘 <a href="https://github.com/vahid2510/Mechanical_Engineering_python" target="_blank">Mechanical Engineering Python</a><br>
-            Structured engineering notebooks.
-        </li>
-        <li>
-            💻 <a href="https://github.com/vahid2510/PyReality" target="_blank">PyReality</a><br>
-            Beginner-friendly Python learning environment.
-        </li>
-        <li>
-            🧪 <a href="https://github.com/vahid2510/Python-Example" target="_blank">Python-Example</a><br>
-            ~200 creative Python snippets.
-        </li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2>Contact</h2>
-    <p>GitHub: <a href="https://github.com/vahid2510" target="_blank">github.com/vahid2510</a></p>
-</div>
-
+<!-- FOOTER -->
 <div class="footer">
     © 2025 — Vahid A. Khorami
 </div>
