@@ -1,403 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vahid Ahmadi Khorami</title>
+  <meta charset="UTF-8" />
+  <title>Vahid Ahmadi Khorami | Mechanical Engineer & Python Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Vahid Ahmadi Khorami - Mechanical Engineer, Python Developer, Numerical Methods, Engineering Education, CIVILICA profile, GitHub projects." />
 
-<!-- FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-<style>
+  <!-- Three.js for simple 3D -->
+  <script src="https://unpkg.com/three@0.161.0/build/three.min.js"></script>
 
-/* ---------- ROOT VARIABLES ---------- */
-:root {
-    --bg-light: #f4f6fa;
-    --bg-dark: #0d1117;
-    --card-light: #ffffff;
-    --card-dark: #161b22;
-    --text-light: #1f2933;
-    --text-dark: #e5e7eb;
-    --primary: #0078ff;
-    --primary-glow: rgba(0,120,255,0.45);
-    --radius: 18px;
-    --shadow: 0 8px 25px rgba(0,0,0,0.08);
-    --transition: 0.25s ease;
-}
-
-body {
-    margin: 0;
-    font-family: Inter, sans-serif;
-    background: var(--bg-light);
-    color: var(--text-light);
-    transition: var(--transition);
-}
-
-/* RTL MODE */
-body.fa {
-    direction: rtl;
-    font-family: "Vazirmatn", sans-serif;
-}
-
-/* DARK MODE */
-body.dark {
-    background: var(--bg-dark);
-    color: var(--text-dark);
-}
-
-/* ---------- NAVBAR ---------- */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    backdrop-filter: blur(12px);
-    background: rgba(0,0,0,0.35);
-    display: flex;
-    justify-content: space-between;
-    padding: 14px 32px;
-    z-index: 50;
-}
-
-.nav-links {
-    display: flex;
-    gap: 26px;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-    letter-spacing: .03em;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.btn {
-    padding: 6px 14px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-size: 13px;
-    border: none;
-    color: #fff;
-    background: var(--primary);
-    transition: var(--transition);
-}
-
-.btn:hover {
-    background: #0060d1;
-}
-
-/* ---------- HERO SECTION ---------- */
-.hero {
-    height: 80vh;
-    background: radial-gradient(circle at top left, #1f2937, #0d1117 55%);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    padding: 20px;
-    animation: fadeHero 1.2s ease;
-}
-
-@keyframes fadeHero {
-    from { opacity: 0; transform: translateY(-25px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.hero h1 {
-    margin: 0;
-    font-size: 50px;
-    font-weight: 700;
-}
-
-.hero h3 {
-    margin-top: 12px;
-    font-size: 20px;
-    opacity: 0.85;
-}
-
-.hero-sub {
-    margin-top: 8px;
-    opacity: 0.75;
-    font-size: 14px;
-}
-
-.tag-row {
-    margin-top: 16px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-.tag {
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    font-size: 12px;
-}
-
-/* ---------- CONTAINER ---------- */
-.container {
-    max-width: 1180px;
-    margin: 40px auto;
-    padding: 0 22px;
-}
-
-/* ---------- SECTION ---------- */
-.section {
-    background: var(--card-light);
-    padding: 32px;
-    border-radius: var(--radius);
-    margin-bottom: 32px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-body.dark .section {
-    background: var(--card-dark);
-}
-
-/* ---------- SECTION TITLES ---------- */
-.sec-title {
-    border-left: 6px solid var(--primary);
-    padding-left: 12px;
-    font-size: 26px;
-    margin-top: 0;
-    margin-bottom: 18px;
-    font-weight: 700;
-}
-
-body.fa .sec-title {
-    border-left: none;
-    border-right: 6px solid var(--primary);
-    padding-right: 12px;
-    padding-left: 0;
-}
-
-/* ---------- PROJECT CARDS ---------- */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 20px;
-}
-
-.card {
-    padding: 20px;
-    border-radius: var(--radius);
-    background: var(--card-light);
-    box-shadow: var(--shadow);
-    border-top: 4px solid var(--primary);
-    transition: var(--transition);
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
-
-body.dark .card {
-    background: var(--card-dark);
-}
-
-/* ---------- CIVILICA BUTTON ---------- */
-.civ-btn {
-    display: inline-block;
-    padding: 12px 22px;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 999px;
-    margin-top: 18px;
-    font-weight: 600;
-}
-
-/* ---------- FOOTER ---------- */
-.footer {
-    text-align: center;
-    padding: 30px;
-    font-size: 13px;
-    opacity: .7;
-}
-
-</style>
-</head>
-
-<body class="en">
-
-<!-- NAVBAR -->
-<div class="navbar">
-    <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#contact">Contact</a>
-    </div>
-
-    <div class="nav-buttons">
-        <button class="btn" onclick="toggleLang()">FA / EN</button>
-        <button class="btn" onclick="toggleMode()">Dark</button>
-    </div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-    <h1 id="hero-title">Vahid Ahmadi Khorami</h1>
-    <h3 id="hero-sub">Mechanical Engineer • Python Developer • Numerical Methods</h3>
-    <p class="hero-sub" id="hero-desc">Building learning tools, numerical models, and engineering-focused Python systems.</p>
-
-    <div class="tag-row" id="tags">
-        <span class="tag">Python for Engineers</span>
-        <span class="tag">Numerical Methods</span>
-        <span class="tag">Educational Tools</span>
-        <span class="tag">Terminal Graphics</span>
-    </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="container">
-
-    <!-- ABOUT -->
-    <div class="section" id="about">
-        <h2 class="sec-title" id="about-title">About Me</h2>
-        <p id="about-text">
-            I am a mechanical engineer specializing in Python programming, numerical analysis,
-            engineering education, simulation tools, and educational frameworks.
-        </p>
-    </div>
-
-    <!-- PROJECTS -->
-    <div class="section" id="projects">
-        <h2 class="sec-title" id="projects-title">Featured Projects</h2>
-
-        <div class="project-grid">
-            <div class="card">
-                <h3>⭐ starpatterns-lib</h3>
-                <p id="p1">Terminal-based ASCII pattern generator for algorithm teaching.</p>
-                <a href="https://github.com/vahid2510/starpatterns-lib" target="_blank">View on GitHub →</a>
-            </div>
-
-            <div class="card">
-                <h3>📘 Mechanical Engineering Python</h3>
-                <p id="p2">Structured notebooks for engineering students.</p>
-                <a href="https://github.com/vahid2510/Mechanical_Engineering_python" target="_blank">View on GitHub →</a>
-            </div>
-
-            <div class="card">
-                <h3>💻 PyReality</h3>
-                <p id="p3">Beginner-friendly Python learning environment.</p>
-                <a href="https://github.com/vahid2510/PyReality" target="_blank">View on GitHub →</a>
-            </div>
-
-            <div class="card">
-                <h3>🧪 Python-Example</h3>
-                <p id="p4">A set of 200 creative Python examples.</p>
-                <a href="https://github.com/vahid2510/Python-Example" target="_blank">View on GitHub →</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- RESEARCH -->
-    <div class="section" id="research">
-        <h2 class="sec-title" id="research-title">Research & Publications</h2>
-        <p id="research-text">
-            My research activities, conference papers, and academic achievements are listed on CIVILICA.
-        </p>
-
-        <a class="civ-btn" href="https://civilica.com/p/249923/" target="_blank" id="civ-btn">
-            View CIVILICA Profile →
-        </a>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="section" id="contact">
-        <h2 class="sec-title" id="contact-title">Contact</h2>
-        <p id="contact-text">
-            For collaboration or academic-educational projects:
-        </p>
-
-        <p><strong>GitHub: </strong>
-            <a href="https://github.com/vahid2510" target="_blank">github.com/vahid2510</a>
-        </p>
-
-        <p><strong>CIVILICA: </strong>
-            <a href="https://civilica.com/p/249923/" target="_blank">civilica.com/p/249923</a>
-        </p>
-    </div>
-
-</div>
-
-<div class="footer">
-    © 2025 — Vahid A. Khorami • Built with GitHub Pages
-</div>
-
-<!-- ---------- JAVASCRIPT LOGIC (LANG + DARK MODE) ---------- -->
-<script>
-
-function toggleMode() {
-    document.body.classList.toggle("dark");
-}
-
-function toggleLang() {
-
-    const isFA = document.body.classList.contains("fa");
-
-    if (!isFA) {
-        document.body.classList.add("fa");
-        document.body.classList.remove("en");
-
-        /* HERO */
-        hero_sub.innerText = "مهندس مکانیک • توسعه‌دهنده پایتون • روش‌های عددی";
-        hero_desc.innerText = "ساخت ابزارهای آموزشی، مدل‌های عددی و سیستم‌های پایتونی مهندسی";
-        
-        document.getElementById("tags").innerHTML = `
-            <span class="tag">پایتون برای مهندسان</span>
-            <span class="tag">روش‌های عددی</span>
-            <span class="tag">ابزارهای آموزشی</span>
-            <span class="tag">گرافیک ترمینال</span>
-        `;
-
-        /* NAVIGATION */
-        document.getElementById("nav-links").innerHTML = `
-            <a href="#about">درباره</a>
-            <a href="#projects">پروژه‌ها</a>
-            <a href="#research">پژوهش</a>
-            <a href="#contact">تماس</a>
-        `;
-
-        /* ABOUT */
-        about_title.innerText = "درباره من";
-        about_text.innerText = "من وحید احمدی خرمی هستم؛ مهندس مکانیک و علاقه‌مند به پایتون، روش‌های عددی، تولید ابزارهای آموزشی و توسعه سیستم‌های شبیه‌سازی.";
-
-        /* PROJECTS */
-        projects_title.innerText = "پروژه‌های منتخب";
-        p1.innerText = "تولید الگوهای ASCII برای آموزش الگوریتم و حلقه‌ها.";
-        p2.innerText = "دفترچه‌های آموزشی برای دانشجویان مهندسی.";
-        p3.innerText = "محیط ساده برای یادگیری پایتون.";
-        p4.innerText = "مجموعه‌ای از ۲۰۰ مثال خلاقانه.";
-
-        /* RESEARCH */
-        research_title.innerText = "پژوهش و مقالات";
-        research_text.innerText = "مقالات و فعالیت‌های علمی من در پایگاه سیویلیکا قابل مشاهده است.";
-        civ_btn.innerText = "مشاهده پروفایل سیویلیکا →";
-
-        /* CONTACT */
-        contact_title.innerText = "تماس";
-        contact_text.innerText = "برای همکاری یا پروژه‌های آموزشی مهندسی:";
-        
-    } else {
-        location.reload();
+  <style>
+    :root {
+      --bg-main: #071120;
+      --card: #111a2b;
+      --card-soft: #162238;
+      --accent: #00aaff;
+      --accent-soft: #78c7ff;
+      --text-main: #e5e9f0;
+      --text-muted: #9ca3af;
+      --radius: 18px;
+      --shadow: 0 12px 30px rgba(0,0,0,0.35);
     }
-}
 
-</script>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      transition: 0.3s ease;
+    }
+
+    body.fa {
+      direction: rtl;
+      font-family: "Vazirmatn", sans-serif;
+    }
+
+    body.dark {
+      filter: brightness(1.05);
+      background: #040813;
+    }
+
+    body.blueprint {
+      background-color: #071120;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(0, 150, 255, 0.35) 1px, transparent 0),
+        radial-gradient(circle at 1px 1px, rgba(0, 150, 255, 0.16) 1px, transparent 0);
+      background-size: 40px 40px, 8px 8px;
+      background-attachment: fixed;
+    }
+
+    body.engineer-neon {
+      filter: brightness(1.2) saturate(1.3);
+    }
+
+    a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    /* Scroll Laser */
+    #scroll-laser {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00aaff, #0066ff);
+      width: 0%;
+      z-index: 9999;
+      box-shadow: 0 0 18px rgba(0,150,255,0.8);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 14px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(7, 17, 36, 0.92);
+      border-bottom: 1px solid rgba(0,170,255,0.25);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00aaff, #0066ff);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(0,150,255,0.5);
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      filter: brightness(1.2);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 5;
+      padding: 28px 32px;
+      border-radius: 24px;
+      background: rgba(11, 20, 40, 0.75);
+      border: 1px solid rgba(0,170,255,0.35);
+      box-shadow:
+        inset 0 0 30px rgba(0,170,255,0.15),
+        0 0 35px rgba(0,0,0,0.75);
+      max-width: 640px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .hero-sub {
+      margin-top: 10px;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .fade-enter {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sections */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 18px 60px;
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: inline-block;
+      position: relative;
+      padding-left: 12px;
+      color: var(--accent-soft);
+    }
+
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 4px;
+      height: 110%;
+      background: var(--accent);
+      transform: translateY(-50%);
+    }
+
+    body.fa .section-title {
+      padding-left: 0;
+      padding-right: 12px;
+    }
+
+    body.fa .section-title::before {
+      left: auto;
+      right: 0;
+    }
+
+    .section-card {
+      border-radius: var(--radius);
+      background: rgba(17, 26, 43, 0.85);
+      border: 1px solid rgba(0,170,255,0.3);
+      box-shadow:
+        0 0 20px rgba(0,0,0,0.5),
+        0 0 30px rgba(0,150,255,0.18);
+      padding: 22px 20px;
+    }
+
+    .section-card p {
+      margin-top: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .project-card {
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(14, 24, 41, 0.9);
+      border: 1px solid rgba(0,170,255,0.3);
+      box-shadow:
+        0 0 20px rgba(0,0,0,0.5),
+        0 0 25px rgba(0,150,255,0.18);
+      transition: 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 28px rgba(0,0,0,0.7),
+        0 0 30px rgba(0,150,255,0.3);
+    }
+
+    .project-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    /* Blog cards */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .blog-card {
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(14, 24, 41, 0.9);
+      border: 1px solid rgba(0,170,255,0.3);
+      box-shadow:
+        0 0 20px rgba(0,0,0,0.5),
+        0 0 25px rgba(0,150,255,0.18);
+    }
+
+    .blog-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .blog-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 24px;
+      }
+      .nav-links {
+        gap: 14px;
+        font-size: 12px;
+      }
+      .hero-card {
+        padding: 20px;
+      }
+    }
+
+  </style>
+</head>
+<body class="blueprint">
+
+  <div id="scroll-laser"></div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#blog">Blog</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-btns">
+      <button class="btn" onclick="toggleLang()">FA / EN</button>
+      <button class="btn" onclick="toggleDark()">Dark</button>
+      <button class="btn" onclick="toggleNeon()">Neon</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-card fade-enter">
+      <h1 id="hero-title" class="hero-title">
+        Vahid Ahmadi Khorami
+      </h1>
+      <p id="hero-sub" class="hero-sub">
+        Mechanical Engineer • Python Developer • Numerical Methods
+      </p>
+      <p id="hero-desc" class="hero-sub">
+        Building numerical tools, educational resources, and engineering-focused Python systems.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <div class="container fade-enter">
+
+    <!-- About -->
+    <section id="about" class="section">
+      <h2 id="about-title" class="section-title">About Me</h2>
+      <div class="section-card">
+        <p id="about-text">
+          I am a mechanical engineer with a strong focus on Python programming, numerical methods,
+          and engineering education. I work on practical learning-oriented tools such as engineering
+          notebooks, numerical utilities, and terminal-based visualization systems.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <h2 id="projects-title" class="section-title">GitHub Projects (Auto Loaded)</h2>
+      <div class="section-card">
+        <div id="projects-grid" class="projects-grid">
+          <!-- Repos load here -->
+        </div>
+        <p id="projects-hint" style="margin-top:10px;font-size:12px;color:var(--text-muted);">
+          Projects are fetched automatically from GitHub (public repos only).
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section">
+      <h2 id="blog-title" class="section-title">Blog</h2>
+      <div class="section-card">
+        <div id="blog-grid" class="blog-grid">
+          <!-- Blog posts from JS will render here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Research / CIVILICA -->
+    <section id="research" class="section">
+      <h2 id="research-title" class="section-title">Research & CIVILICA</h2>
+      <div class="section-card">
+        <p id="research-text">
+          My academic work, conference papers, and scientific activities are available on CIVILICA,
+          one of the main scientific databases in Iran. This profile links my research in mechanical
+          engineering, filtration, artificial intelligence applications, and related areas.
+        </p>
+        <p style="margin-top:10px;">
+          <strong>CIVILICA:</strong>
+          <a href="https://civilica.com/p/249923/" target="_blank">civilica.com/p/249923</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2 id="contact-title" class="section-title">Contact</h2>
+      <div class="section-card">
+        <p id="contact-text">
+          For collaboration, educational projects, or engineering tools, feel free to reach out.
+        </p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/vahid2510" target="_blank">github.com/vahid2510</a></p>
+        <p><strong>CIVILICA:</strong> <a href="https://civilica.com/p/249923/" target="_blank">civilica.com/p/249923</a></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">
+    © 2025 — Vahid A. Khorami • Hosted on GitHub Pages
+  </div>
+
+  <script>
+    // Scroll Laser
+    window.addEventListener("scroll", () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      document.getElementById("scroll-laser").style.width = scrolled + "%";
+    });
+
+    // Dark mode
+    function toggleDark() {
+      document.body.classList.toggle("dark");
+    }
+
+    // Neon mode
+    function toggleNeon() {
+      document.body.classList.toggle("engineer-neon");
+    }
+
+    // Language toggle
+    function toggleLang() {
+      const isFA = document.body.classList.contains("fa");
+      if (!isFA) {
+        document.body.classList.add("fa");
+
+        // Navbar
+        document.getElementById("nav-links").innerHTML = `
+          <a href="#about">درباره</a>
+          <a href="#projects">پروژه‌ها</a>
+          <a href="#blog">وبلاگ</a>
+          <a href="#research">پژوهش</a>
+          <a href="#contact">تماس</a>
+        `;
+
+        // Hero
+        document.getElementById("hero-title").innerText = "وحید احمدی خرمی";
+        document.getElementById("hero-sub").innerText = "مهندس مکانیک • توسعه‌دهنده پایتون • روش‌های عددی";
+        document.getElementById("hero-desc").innerText = "ساخت ابزارهای عددی، محتوای آموزشی و سیستم‌های پایتونی برای مهندسان.";
+
+        // About
+        document.getElementById("about-title").innerText = "درباره من";
+        document.getElementById("about-text").innerText =
+          "من وحید احمدی خرمی هستم؛ مهندس مکانیک و علاقه‌مند به پایتون، روش‌های عددی و آموزش مهندسی. تمرکز من روی ساخت ابزارها و مثال‌هایی است که یادگیری مفاهیم مهندسی و کدنویسی را ساده‌تر و کاربردی‌تر کنند.";
+
+        // Projects
+        document.getElementById("projects-title").innerText = "پروژه‌ها (گرفته‌شده از گیت‌هاب)";
+        document.getElementById("projects-hint").innerText =
+          "لیست پروژه‌ها به‌صورت خودکار از ریپوی عمومی گیت‌هاب (vahid2510) خوانده می‌شود.";
+
+        // Blog
+        document.getElementById("blog-title").innerText = "وبلاگ";
+
+        // Research
+        document.getElementById("research-title").innerText = "پژوهش و سیویلیکا";
+        document.getElementById("research-text").innerText =
+          "مقالات و فعالیت‌های علمی من در پایگاه سیویلیکا ثبت شده است. این پروفایل شامل کارهای من در حوزه مهندسی مکانیک، فیلتراسیون، کاربردهای هوش مصنوعی و موضوعات مرتبط است.";
+
+        // Contact
+        document.getElementById("contact-title").innerText = "تماس";
+        document.getElementById("contact-text").innerText =
+          "برای همکاری، پروژه‌های آموزشی یا ابزارهای مهندسی می‌توانید از طریق گیت‌هاب یا سیویلیکا با من در ارتباط باشید.";
+
+      } else {
+        document.body.classList.remove("fa");
+        location.reload();
+      }
+    }
+
+    // Auto-load GitHub repositories
+    async function loadRepos() {
+      const container = document.getElementById("projects-grid");
+      container.innerHTML = "<p style='font-size:13px;color:var(--text-muted);'>Loading repositories from GitHub…</p>";
+
+      try {
+        const res = await fetch("https://api.github.com/users/vahid2510/repos");
+        const data = await res.json();
+
+        const clean = data
+          .filter(r => !r.fork)
+          .sort((a, b) => b.stargazers_count - a.stargazers_count);
+
+        if (!clean.length) {
+          container.innerHTML = "<p style='font-size:13px;color:var(--text-muted);'>No public repositories found.</p>";
+          return;
+        }
+
+        container.innerHTML = "";
+        clean.forEach(repo => {
+          const card = document.createElement("div");
+          card.className = "project-card";
+
+          card.innerHTML = `
+            <div class="project-name">${repo.name}</div>
+            <div class="project-desc">${repo.description || "No description provided."}</div>
+            <a class="project-link" href="${repo.html_url}" target="_blank">View on GitHub →</a>
+          `;
+          container.appendChild(card);
+        });
+
+      } catch (e) {
+        container.innerHTML = "<p style='font-size:13px;color:var(--text-muted);'>Failed to load repositories.</p>";
+      }
+    }
+
+    // Simple blog posts from JS array
+    function loadBlog() {
+      const posts = [
+        {
+          id: 1,
+          title_en: "Using Python for Mechanical Engineering",
+          title_fa: "استفاده از پایتون در مهندسی مکانیک",
+          date: "2025-01-10",
+          desc_en: "Short overview of how Python can simplify numerical analysis and simulation in mechanical problems.",
+          desc_fa: "مروری کوتاه بر این‌که چطور پایتون می‌تواند تحلیل عددی و شبیه‌سازی مسائل مکانیک را ساده‌تر کند."
+        },
+        {
+          id: 2,
+          title_en: "Teaching Programming through Terminal Patterns",
+          title_fa: "آموزش برنامه‌نویسی با الگوهای ترمینال",
+          date: "2025-02-02",
+          desc_en: "Explaining how starpatterns-lib helps beginners understand loops, conditions and algorithms visually.",
+          desc_fa: "توضیح این‌که چگونه starpatterns-lib به مبتدیان کمک می‌کند حلقه‌ها و الگوریتم‌ها را به شکل بصری درک کنند."
+        }
+      ];
+
+      const grid = document.getElementById("blog-grid");
+      grid.innerHTML = "";
+
+      const isFA = document.body.classList.contains("fa");
+
+      posts.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "blog-card";
+        card.innerHTML = `
+          <div class="blog-title">${isFA ? p.title_fa : p.title_en}</div>
+          <div class="blog-date">${p.date}</div>
+          <div class="blog-desc">${isFA ? p.desc_fa : p.desc_en}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Simple Three.js 3D scene
+    function init3D() {
+      const canvas = document.getElementById("hero-canvas");
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      camera.position.z = 4;
+
+      const geometry = new THREE.IcosahedronGeometry(1, 1);
+      const material = new THREE.MeshStandardMaterial({
+        color: 0x00aaff,
+        wireframe: true,
+        metalness: 0.7,
+        roughness: 0.2
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
+
+      const ambient = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambient);
+      const point = new THREE.PointLight(0x00aaff, 1.2);
+      point.position.set(3, 2, 4);
+      scene.add(point);
+
+      function onResize() {
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      window.addEventListener("resize", onResize);
+      onResize();
+
+      function animate(t) {
+        requestAnimationFrame(animate);
+        mesh.rotation.x = t * 0.0003;
+        mesh.rotation.y = t * 0.0004;
+        renderer.render(scene, camera);
+      }
+      animate(0);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadRepos();
+      loadBlog();
+      init3D();
+    });
+  </script>
 </body>
 </html>
